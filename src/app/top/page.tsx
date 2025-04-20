@@ -1,7 +1,7 @@
 import styles from "./page.module.css";
 import Link from "next/link";
 import { IoMdHome } from "react-icons/io";
-import { MdOutlineShoppingBag, MdOutlineEvent, MdOutlineSportsHandball, MdOutlineWorkOutline, MdArrowForward } from "react-icons/md";
+import { MdOutlineShoppingBag, MdOutlineEvent, MdOutlineSportsHandball, MdOutlineWorkOutline } from "react-icons/md";
 
 export default function Top() {
     return (
@@ -39,10 +39,6 @@ export default function Top() {
                         <div className={styles.cardContent}>
                             <MdOutlineShoppingBag className={styles.cardIcon} size={48} />
                             <p>お得な情報やキャンペーンをチェック</p>
-                            <div className={styles.cardAction}>
-                                <span>詳細を見る</span>
-                                <MdArrowForward size={18} />
-                            </div>
                         </div>
                     </Link>
                     <Link href="/#イベント情報" className={styles.card}>
@@ -50,10 +46,6 @@ export default function Top() {
                         <div className={styles.cardContent}>
                             <MdOutlineEvent className={styles.cardIcon} size={48} />
                             <p>島内の様々なイベント情報を確認</p>
-                            <div className={styles.cardAction}>
-                                <span>詳細を見る</span>
-                                <MdArrowForward size={18} />
-                            </div>
                         </div>
                     </Link>
                     <Link href="/#趣味、習い事" className={styles.card}>
@@ -61,10 +53,6 @@ export default function Top() {
                         <div className={styles.cardContent}>
                             <MdOutlineSportsHandball className={styles.cardIcon} size={48} />
                             <p>新しい趣味や仲間との出会い</p>
-                            <div className={styles.cardAction}>
-                                <span>詳細を見る</span>
-                                <MdArrowForward size={18} />
-                            </div>
                         </div>
                     </Link>
                     <Link href="/#求人情報" className={styles.card}>
@@ -72,10 +60,6 @@ export default function Top() {
                         <div className={styles.cardContent}>
                             <MdOutlineWorkOutline className={styles.cardIcon} size={48} />
                             <p>島内のお仕事情報をご紹介</p>
-                            <div className={styles.cardAction}>
-                                <span>詳細を見る</span>
-                                <MdArrowForward size={18} />
-                            </div>
                         </div>
                     </Link>
                 </div>
