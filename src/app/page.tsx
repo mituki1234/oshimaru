@@ -13,13 +13,13 @@ export default function Home() {
       <div className={styles.sidebar}>
         <div className={styles.menu}>
           <div className={styles.menuItem}>
-            <Link href="/">お買い物</Link>
+            <Link href="#お買い物情報、キャンペーン">お買い物</Link>
           </div>
           <div className={styles.menuItem}>
-            <Link href="/about">イベント</Link>
+            <Link href="#イベント">イベント</Link>
           </div>
           <div className={styles.menuItem}>
-            <Link href="/projects">サークル</Link>
+            <Link href="#サークル">サークル</Link>
           </div>
           <div className={styles.menuItem}>
             <IoMdHome size={24} />
@@ -27,7 +27,6 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.content}>
-        <h2 className={`${styles.title}`}>お買い物</h2>
         <ClientPosterList />
       </div>
     </div>
@@ -111,8 +110,8 @@ function ClientPosterList() {
   return (
     <div>
       {availableGenres.map(genre => (
-        <div key={genre} className={styles.genreSection}>
-          <h3 className={styles.genreTitle}>{genre}</h3>
+        <div key={genre} className={styles.genreSection} id={genre}>
+          <h2 className={`${styles.title}`}>{genre}</h2>
           <div className={styles.grid}>
             {postersByGenre[genre].map(poster => (
               <div key={poster.id} className={styles.card}>
