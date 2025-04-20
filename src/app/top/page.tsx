@@ -1,7 +1,7 @@
 import styles from "./page.module.css";
-import Link from "next/link"
+import Link from "next/link";
 import { IoMdHome } from "react-icons/io";
-import { MdOutlineShoppingBag, MdOutlineEvent, MdOutlineSportsHandball, MdOutlineWorkOutline } from "react-icons/md";
+import { MdOutlineShoppingBag, MdOutlineEvent, MdOutlineSportsHandball, MdOutlineWorkOutline, MdArrowForward } from "react-icons/md";
 
 export default function Top() {
     return (
@@ -28,34 +28,57 @@ export default function Top() {
                 </div>
             </div>
             <div className={styles.content}>
-                <Link href="/#お買い物情報、キャンペーン" className={styles.card}>
-                    <h3>お買い物情報、キャンペーン</h3>
-                    <div className={styles.cardContent}>
-                        <MdOutlineShoppingBag className={styles.cardIcon} size={48} />
-                        <p>お得な情報をチェック</p>
-                    </div>
-                </Link>
-                <Link href="/#イベント情報" className={styles.card}>
-                    <h3>イベント情報</h3>
-                    <div className={styles.cardContent}>
-                        <MdOutlineEvent className={styles.cardIcon} size={48} />
-                        <p>地域のイベント情報</p>
-                    </div>
-                </Link>
-                <Link href="/#趣味、習い事" className={styles.card}>
-                    <h3>趣味、習い事</h3>
-                    <div className={styles.cardContent}>
-                        <MdOutlineSportsHandball className={styles.cardIcon} size={48} />
-                        <p>サークル・教室の情報</p>
-                    </div>
-                </Link>
-                <Link href="/#求人情報" className={styles.card}>
-                    <h3>求人情報</h3>
-                    <div className={styles.cardContent}>
-                        <MdOutlineWorkOutline className={styles.cardIcon} size={48} />
-                        <p>お仕事を探す</p>
-                    </div>
-                </Link>
+                <div className={styles.heroSection}>
+                    <h1 className={styles.title}>おしまる</h1>
+                    <p className={styles.subtitle}>伊豆大島の暮らしをもっと便利に、もっと楽しく</p>
+                </div>
+                
+                <div className={styles.cardsContainer}>
+                    <Link href="/#お買い物情報、キャンペーン" className={styles.card}>
+                        <h3>お買い物情報</h3>
+                        <div className={styles.cardContent}>
+                            <MdOutlineShoppingBag className={styles.cardIcon} size={48} />
+                            <p>お得な情報やキャンペーンをチェック</p>
+                            <div className={styles.cardAction}>
+                                <span>詳細を見る</span>
+                                <MdArrowForward size={18} />
+                            </div>
+                        </div>
+                    </Link>
+                    <Link href="/#イベント情報" className={styles.card}>
+                        <h3>イベント情報</h3>
+                        <div className={styles.cardContent}>
+                            <MdOutlineEvent className={styles.cardIcon} size={48} />
+                            <p>島内の様々なイベント情報を確認</p>
+                            <div className={styles.cardAction}>
+                                <span>詳細を見る</span>
+                                <MdArrowForward size={18} />
+                            </div>
+                        </div>
+                    </Link>
+                    <Link href="/#趣味、習い事" className={styles.card}>
+                        <h3>趣味・サークル</h3>
+                        <div className={styles.cardContent}>
+                            <MdOutlineSportsHandball className={styles.cardIcon} size={48} />
+                            <p>新しい趣味や仲間との出会い</p>
+                            <div className={styles.cardAction}>
+                                <span>詳細を見る</span>
+                                <MdArrowForward size={18} />
+                            </div>
+                        </div>
+                    </Link>
+                    <Link href="/#求人情報" className={styles.card}>
+                        <h3>求人情報</h3>
+                        <div className={styles.cardContent}>
+                            <MdOutlineWorkOutline className={styles.cardIcon} size={48} />
+                            <p>島内のお仕事情報をご紹介</p>
+                            <div className={styles.cardAction}>
+                                <span>詳細を見る</span>
+                                <MdArrowForward size={18} />
+                            </div>
+                        </div>
+                    </Link>
+                </div>
             </div>
         </div>
     );

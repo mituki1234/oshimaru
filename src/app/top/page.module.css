@@ -1,3 +1,8 @@
+.container {
+    min-height: 100vh;
+    background-color: #f7f7f7;
+}
+
 .sidebar {
     display: flex;
     flex-direction: column;
@@ -59,15 +64,66 @@
     color: var(--text-on-orange);
 }
 
+/* ヒーローセクション */
+.heroSection {
+    background: linear-gradient(135deg, rgba(255,126,0,0.9), rgba(255,90,31,0.95));
+    padding: 60px 0;
+    margin-bottom: 40px;
+    border-radius: 0 0 30px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* タイトルスタイル */
+.title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    margin: 0;
+    letter-spacing: 1px;
+    position: relative;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: white;
+    margin: 15px auto 15px;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* サブタイトルスタイル */
+.subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    margin: 0 auto 10px;
+    max-width: 600px;
+    font-weight: 400;
+    line-height: 1.5;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
 /* コンテンツエリアのスタイリング */
 .content {
     margin-left: 80px;
-    padding: 30px;
+    padding: 0 30px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardsContainer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
     max-width: 1200px;
-    margin: 0 auto 0 80px;
+    margin: 0 auto;
+    animation: fadeInUp 0.8s ease-out;
 }
 
 /* 新しいカードデザイン */
@@ -82,7 +138,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 200px;
+    height: 250px;
+    cursor: pointer; /* カーソル変更でクリック可能を示唆 */
 }
 
 .card::before {
@@ -112,12 +169,42 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     position: relative;
     z-index: 2;
 }
 
+.card p {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+.cardIcon {
+    font-size: 2.5rem;
+    color: var(--dark-orange);
+    margin-bottom: 10px;
+}
+
+/* カードのクリック可能感を高める要素 */
+.cardAction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    padding: 8px 0;
+    color: var(--dark-orange);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.cardAction span {
+    margin-right: 5px;
+}
+
+/* ホバー効果の強化 */
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
@@ -127,17 +214,58 @@
     background: linear-gradient(135deg, var(--dark-orange), var(--base-orange));
 }
 
-.cardIcon {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    color: var(--dark-orange);
+.card:hover .cardAction {
+    color: var(--base-orange);
+    transform: translateX(3px);
+}
+
+/* カードの下部に波線のようなアクセントを追加 */
+.card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--base-orange), var(--dark-orange), 
+        var(--base-orange), var(--dark-orange));
+    background-size: 200% 100%;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.card:hover::after {
+    opacity: 1;
+    background-position: 100% 0;
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* スマホ対応のメディアクエリ */
 @media (max-width: 900px) {
-    .content {
+    .cardsContainer {
         grid-template-columns: 1fr;
-        padding: 20px;
+        padding: 0 20px;
+    }
+    
+    .title {
+        font-size: 2.8rem;
     }
 }
 
@@ -172,6 +300,20 @@
         margin-left: 0;
         margin-bottom: 80px;
     }
+    
+    .heroSection {
+        padding: 40px 0;
+        border-radius: 0;
+    }
+    
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+        padding: 0 20px;
+    }
 }
 
 /* さらに小さい画面（例：iPhone SE等）への対応 */
@@ -183,5 +325,17 @@
     .card h3 {
         font-size: 1.2rem;
         padding: 20px 15px;
+    }
+    
+    .title {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .heroSection {
+        padding: 30px 0;
     }
 }
