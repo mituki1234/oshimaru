@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import ClientPoster from '@/components/ClientPoster';
+import Head from 'next/head';
 
 interface Poster {
   id: string;
@@ -17,13 +18,13 @@ interface Poster {
 export default async function Home() {
   // サーバーサイドでSupabaseクライアントを作成
   const supabase = createServerComponentClient({ cookies });
-  
+
   // サーバーサイドでデータを取得
   const { data: posters, error } = await supabase
     .from('poster')
     .select('*')
     .order('created_at', { ascending: false });
-  
+
   // ジャンルごとにポスターをグループ化
   const postersByGenre = (posters || []).reduce<Record<string, Poster[]>>((acc, poster) => {
     const genre = poster.genre || 'その他';
@@ -33,7 +34,7 @@ export default async function Home() {
     acc[genre].push(poster);
     return acc;
   }, {});
-  
+
   // ジャンルのリスト（表示順を調整）
   const genreOrder = [
     'お買い物情報、キャンペーン',
@@ -42,13 +43,21 @@ export default async function Home() {
     '求人情報',
     'その他'
   ];
-  
+
   // 実際に存在するジャンルだけを抽出して順序付ける
-  const availableGenres = genreOrder.filter(genre => 
+  const availableGenres = genreOrder.filter(genre =>
     postersByGenre[genre] && postersByGenre[genre].length > 0
   );
 
   return (
+    <>
+    <Head>
+        <meta name="description" content="おしまるとは、スーパーなどにあるチラシなどを電子化し、申請したら全て見られるようにすることです。" />
+      <meta name="keywords" content="ポスター、チラシ、大島、イベント、習い事、サークル、チーム、趣味、求人、買い物、お買い物、おしまる" />
+      <meta name="robots" content="index, follow" />
+      <meta property="og:title" content="大島情報局、略しておしまる。" />
+      <meta property="og:description" content="おしまるとは、大島の情報（ポスター)などを集めたサービスです。" />
+    </Head>
     <div className={styles.container}>
       <div className={styles.sidebar}>
         <div className={styles.menu}>
@@ -92,5 +101,6 @@ export default async function Home() {
         )}
       </div>
     </div>
+    </>
   );
 }
