@@ -1,6 +1,6 @@
 "use client";
 import { useState } from 'react';
-import styles from "../page.module.css";
+import styles from "./ClientPoster.module.css";
 
 interface Poster {
   id: string;
