@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://oshimaru.netlify.app
+
+# Sitemaps
+Sitemap: https://oshimaru.netlify.app/sitemap.xml
