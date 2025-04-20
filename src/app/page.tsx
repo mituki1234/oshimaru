@@ -56,10 +56,13 @@ export default async function Home() {
             <Link href="#お買い物情報、キャンペーン">お買い物</Link>
           </div>
           <div className={styles.menuItem}>
-            <Link href="#イベント">イベント</Link>
+            <Link href="#イベント情報">イベント</Link>
           </div>
           <div className={styles.menuItem}>
-            <Link href="#サークル">サークル</Link>
+            <Link href="#趣味、習い事">サークル</Link>
+          </div>
+          <div className={styles.menuItem}>
+            <Link href="#求人情報">求人</Link>
           </div>
           <div className={styles.menuItem}>
             <IoMdHome size={24} />
