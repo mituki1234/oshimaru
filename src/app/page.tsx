@@ -51,13 +51,6 @@ export default async function Home() {
 
   return (
     <>
-    <Head>
-        <meta name="description" content="おしまるとは、スーパーなどにあるチラシなどを電子化し、申請したら全て見られるようにすることです。" />
-      <meta name="keywords" content="ポスター、チラシ、大島、イベント、習い事、サークル、チーム、趣味、求人、買い物、お買い物、おしまる" />
-      <meta name="robots" content="index, follow" />
-      <meta property="og:title" content="大島情報局、略しておしまる。" />
-      <meta property="og:description" content="おしまるとは、大島の情報（ポスター)などを集めたサービスです。" />
-    </Head>
     <div className={styles.container}>
       <div className={styles.sidebar}>
         <div className={styles.menu}>

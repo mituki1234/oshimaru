@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Noto_Sans_JP } from "next/font/google";
+import Head from "next/head";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -31,6 +32,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
+      <Head>
+        <meta name="description" content="おしまるとは、スーパーなどにあるチラシなどを電子化し、申請したら全て見られるようにすることです。" />
+        <meta name="keywords" content="ポスター、チラシ、大島、イベント、習い事、サークル、チーム、趣味、求人、買い物、お買い物、おしまる" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="大島情報局、略しておしまる。" />
+        <meta property="og:description" content="おしまるとは、大島の情報（ポスター)などを集めたサービスです。" />
+      </Head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${notoSansJp.variable}`}>
         {children}
       </body>
