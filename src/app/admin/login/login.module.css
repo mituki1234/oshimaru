@@ -1,0 +1,90 @@
+.container {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    color: #FF8C00;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  
+  .inputGroup {
+    margin-bottom: 20px;
+  }
+  
+  .inputGroup label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .inputGroup input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .inputGroup input:focus {
+    outline: none;
+    border-color: #FF8C00;
+  }
+  
+  .button {
+    width: 100%;
+    padding: 14px;
+    background-color: #FF8C00;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+  }
+  
+  .button:hover {
+    background-color: #E67300;
+  }
+  
+  .forgotPassword {
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .forgotPassword a {
+    color: #FF8C00;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  
+  .forgotPassword a:hover {
+    text-decoration: underline;
+  }
+  
+  /* スマホ対応 */
+  @media (max-width: 480px) {
+    .container {
+      margin: 40px 20px;
+      padding: 20px;
+    }
+    
+    .title {
+      font-size: 1.5rem;
+    }
+    
+    .inputGroup input {
+      padding: 10px;
+    }
+  }
