@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://oshimaru.netlify.app
+Host: https://oshimaru.com
 
 # Sitemaps
-Sitemap: https://oshimaru.netlify.app/sitemap.xml
+Sitemap: https://oshimaru.com/sitemap.xml

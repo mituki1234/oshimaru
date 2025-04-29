@@ -16,5 +16,5 @@ export async function middleware(req: NextRequest) {
 
 // /admin/dashboard へのアクセスに対してミドルウェアを適用
 export const config = {
-  matcher: ['/admin/:path*']
+  matcher: ['/admin/:path*', '/dashboard/:path*']
 };
