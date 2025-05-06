@@ -2,8 +2,7 @@
 
 import Sidebar from './Sidebar';
 import styles from './layout.module.css';
-import { useState } from 'react';
-import { FaBars } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -16,18 +15,26 @@ export default function PageLayout({ children }: PageLayoutProps) {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  // ボディスクロールを制御（モバイルメニュー表示時にスクロールを無効化）
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   return (
-    <div className={styles.layoutContainer}>
-      <button 
-        className={styles.mobileMenuButton} 
-        onClick={toggleMobileMenu}
-        aria-label="メニューを開く"
-      >
-        <FaBars />
-      </button>
-      
-      <div className={`${styles.sidebarWrapper} ${isMobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
-        <Sidebar />
+    <div className={`${styles.layoutContainer} ${isMobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
+      <div className={styles.sidebarWrapper}>
+        <Sidebar 
+          isMobileMenuOpen={isMobileMenuOpen} 
+          toggleMobileMenu={toggleMobileMenu} 
+        />
       </div>
       
       <main className={styles.mainContent}>

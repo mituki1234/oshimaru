@@ -1,14 +1,20 @@
 import styles from "./page.module.css";
 import ClientSidePosterList from '@/components/ClientSidePosterList';
 import PageLayout from '@/components/Layout/PageLayout';
+import Image from 'next/image';
 
 export default function OthersPage() {
   return (
     <PageLayout>
       <div className={styles.container}>
-        <h1 className={styles.heading}>その他</h1>
         <div className={styles.content}>
-          <ClientSidePosterList genre="その他" />
+          <Image 
+            src="/howto.jpg" 
+            alt="その他" 
+            width={500}
+            height={700}
+            priority
+          />
         </div>
       </div>
     </PageLayout>
