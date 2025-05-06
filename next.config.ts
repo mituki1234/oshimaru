@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   // 静的エクスポートではミドルウェアが使用できないので無効化
   // または特定のページだけを静的に生成
   images: {

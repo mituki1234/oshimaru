@@ -1,0 +1,182 @@
+
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    background-color: var(--background-light);
+    font-family: var(--font-noto-sans-jp), sans-serif;
+  }
+  
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80px;
+    height: 100vh;
+    border-right: 1px solid #EAEAEA;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+  }
+  
+  .menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+  }
+  
+  .menuItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 65px;
+    background-color: white;
+    color: var(--base-orange);
+    transition: all 0.2s ease;
+    margin-bottom: 5px;
+    position: relative;
+  }
+  
+  .menuItem:hover {
+    background-color: var(--light-orange);
+    color: var(--text-on-orange);
+  }
+  
+  .menuItem a {
+    text-decoration: none;
+    color: var(--dark-orange);
+    font-weight: 500;
+    font-size: 0.8rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+  }
+  
+  .menuItem:hover a {
+    color: var(--text-on-orange);
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 80px);
+    min-height: 100vh;
+    margin-left: 80px;
+  }
+  
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    background-color: white;
+    color: var(--dark-orange);
+    font-size: 1.3rem;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  .grid {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 15px;
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+  }
+  /* スマホ対応のメディアクエリ */
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+    
+    .content {
+      width: 100%;
+      margin-left: 0;
+      padding-bottom: 70px; /* 下部ナビゲーション分の余白 */
+    }
+    
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 10px;
+    }
+    
+    .sidebar {
+      width: 100%;
+      height: 65px;
+      border-right: none;
+      border-top: 1px solid #EAEAEA;
+      position: fixed;
+      top: auto;
+      bottom: 0;
+      left: 0;
+    }
+    
+    .menu {
+      flex-direction: row;
+      justify-content: space-around;
+      padding-top: 0;
+    }
+    
+    .menuItem {
+      height: 65px;
+      margin-bottom: 0;
+    }
+    
+    .title {
+      position: sticky;
+      top: 0;
+    }
+    
+    .card img {
+    }
+  }
+  
+  /* さらに小さい画面（例：iPhone SE等）への対応 */
+  @media (max-width: 480px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    
+    .menuItem a {
+      font-size: 0.7rem;
+    }
+    
+    .title {
+      font-size: 1.1rem;
+      height: 50px;
+    }
+    
+    .card h3 {
+      font-size: 1rem;
+      margin: 10px 0;
+    }
+    
+    .card img {
+    }
+  }

@@ -13,7 +13,11 @@ interface Poster {
   genre?: string;
 }
 
-export default function ClientSidePosterList() {
+interface ClientSidePosterListProps {
+  genre?: string;
+}
+
+export default function ClientSidePosterList({ genre }: ClientSidePosterListProps) {
   const [postersByGenre, setPostersByGenre] = useState<Record<string, Poster[]>>({});
   const [availableGenres, setAvailableGenres] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
@@ -33,28 +37,35 @@ export default function ClientSidePosterList() {
       try {
         const supabase = createClientComponentClient();
         
-        const { data: posters, error: fetchError } = await supabase
+        let query = supabase
           .from('poster')
           .select('*')
           .order('created_at', { ascending: false });
+        
+        // 特定のジャンルが指定されている場合はフィルタリング
+        if (genre) {
+          query = query.eq('genre', genre);
+        }
+        
+        const { data: posters, error: fetchError } = await query;
           
         if (fetchError) throw fetchError;
         
         // ジャンルごとにポスターをグループ化
         const groupedPosters = (posters || []).reduce<Record<string, Poster[]>>((acc, poster) => {
-          const genre = poster.genre || 'その他';
-          if (!acc[genre]) {
-            acc[genre] = [];
+          const posterGenre = poster.genre || 'その他';
+          if (!acc[posterGenre]) {
+            acc[posterGenre] = [];
           }
-          acc[genre].push(poster);
+          acc[posterGenre].push(poster);
           return acc;
         }, {});
         
         setPostersByGenre(groupedPosters);
         
         // 実際に存在するジャンルだけを抽出して順序付ける
-        const filteredGenres = genreOrder.filter(genre =>
-          groupedPosters[genre] && groupedPosters[genre].length > 0
+        const filteredGenres = genreOrder.filter(g =>
+          groupedPosters[g] && groupedPosters[g].length > 0
         );
         
         setAvailableGenres(filteredGenres);
@@ -67,7 +78,7 @@ export default function ClientSidePosterList() {
     };
     
     fetchPosters();
-  }, []);
+  }, [genre]);
 
   if (loading) return <div className={styles.loading}>読み込み中...</div>;
   
@@ -75,13 +86,31 @@ export default function ClientSidePosterList() {
   
   if (availableGenres.length === 0) return <div className={styles.empty}>表示できるポスターがありません</div>;
 
+  // 特定のジャンルが指定されている場合は、そのジャンルのみ表示
+  if (genre) {
+    const posterList = postersByGenre[genre] || [];
+    
+    if (posterList.length === 0) {
+      return <div className={styles.empty}>このジャンルのポスターはありません</div>;
+    }
+    
+    return (
+      <div className={styles.grid}>
+        {posterList.map(poster => (
+          <ClientPoster key={poster.id} poster={poster} />
+        ))}
+      </div>
+    );
+  }
+
+  // ジャンルが指定されていない場合は、すべてのジャンルを表示
   return (
     <div>
-      {availableGenres.map(genre => (
-        <div key={genre} className={styles.genreSection} id={genre}>
-          <h2 className={`${styles.title}`}>{genre}</h2>
+      {availableGenres.map(g => (
+        <div key={g} className={styles.genreSection} id={g}>
+          <h2 className={`${styles.title}`}>{g}</h2>
           <div className={styles.grid}>
-            {postersByGenre[genre].map(poster => (
+            {postersByGenre[g].map(poster => (
               <ClientPoster key={poster.id} poster={poster} />
             ))}
           </div>
