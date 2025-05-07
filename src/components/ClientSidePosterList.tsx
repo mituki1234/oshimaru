@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import ClientPoster from './ClientPoster';
+import Image from 'next/image';
 import styles from '@/app/page.module.css';
 
 interface Poster {
@@ -84,14 +85,44 @@ export default function ClientSidePosterList({ genre }: ClientSidePosterListProp
   
   if (error) return <div className={styles.error}>{error}</div>;
   
-  if (availableGenres.length === 0) return <div className={styles.empty}>表示できるポスターがありません</div>;
+  if (availableGenres.length === 0) {
+    return (
+      <div className={styles.empty}>
+        <div className={styles.emptyText}>
+          <i className="fas fa-exclamation-circle" style={{ marginRight: '10px', fontSize: '1.5rem' }}></i>
+          表示できるポスターがありません
+        </div>
+        <Image 
+          src={"/undefined.png"} 
+          width={80} 
+          height={104} 
+          alt="表示するポスターがありません" 
+          style={{ opacity: 0.3, marginTop: '20px' }} 
+        />
+      </div>
+    );
+  }
 
   // 特定のジャンルが指定されている場合は、そのジャンルのみ表示
   if (genre) {
     const posterList = postersByGenre[genre] || [];
     
     if (posterList.length === 0) {
-      return <div className={styles.empty}>このジャンルのポスターはありません</div>;
+      return (
+        <div className={styles.empty}>
+          <div className={styles.emptyText}>
+            <i className="fas fa-exclamation-circle" style={{ marginRight: '10px', fontSize: '1.5rem' }}></i>
+            このジャンルのポスターはありません
+          </div>
+          <Image 
+            src={"/undefined.png"} 
+            width={80} 
+            height={104} 
+            alt="表示するポスターがありません" 
+            style={{ opacity: 0.3, marginTop: '20px' }} 
+          />
+        </div>
+      );
     }
     
     return (

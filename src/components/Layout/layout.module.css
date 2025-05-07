@@ -2,7 +2,7 @@
   display: flex;
   min-height: 100vh;
   width: 100%;
-  background-color: var(--background-light);
+  background-color: #f7f7f7;
 }
 
 .sidebarWrapper {
@@ -140,6 +140,13 @@
   border-radius: 3px;
   margin-left: 8px;
 }
+.heading {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--dark-orange);
+  padding: 15px;
+  border-bottom: 2px solid var(--light-orange);
+}
 
 .divider {
   height: 1px;
@@ -252,6 +259,14 @@
 
 .mobileLogoLink {
   text-decoration: none;
+}
+.closeMenuButton {
+  display: none;
+}
+
+/* モバイル固定フッターナビゲーション */
+.mobileNavBar {
+  display: none;
 }
 
 /* モバイル対応 */
@@ -386,6 +401,95 @@
     padding: 5px;
     z-index: 1020;
   }
+
+  /* メインコンテンツの調整 */
+  .mainContent {
+    margin-left: 0;
+    width: 100%;
+    padding-top: 60px;
+    padding-bottom: 70px; /* モバイルナビの高さ分余白をとる */
+  }
+  
+  /* サイドバーを非表示 */
+  .sidebar {
+    display: none;
+  }
+  
+  /* モバイルロゴを中央寄せ */
+  .mobileHeader {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    border-bottom: 1px solid #EAEAEA;
+    z-index: 1001;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+  }
+  
+  .mobileLogo {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--dark-orange);
+    letter-spacing: 0.5px;
+  }
+  
+  /* モバイル固定フッターナビゲーション */
+  .mobileNavBar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    background-color: white;
+    border-top: 1px solid #EAEAEA;
+    z-index: 1001;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.08);
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .mobileNavItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #777;
+    font-size: 0.7rem;
+    width: 20%;
+    height: 100%;
+    padding: 8px 0;
+  }
+  
+  .mobileNavIcon {
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+  }
+  
+  .mobileNavText {
+    font-size: 0.7rem;
+    text-align: center;
+  }
+  
+  .activeMobileNav {
+    color: var(--dark-orange);
+    border-top: 3px solid var(--dark-orange);
+    padding-top: 5px;
+  }
+  
+  /* 不要なものを非表示に */
+  .mobileMenuButton, 
+  .closeMenuButton,
+  .mobileMenuOverlay {
+    display: none;
+  }
 }
 
 /* 小型タブレット・大型スマホ */
@@ -423,5 +527,13 @@
   
   .menuItem a {
     padding: 12px;
+  }
+
+  .mobileNavText {
+    font-size: 0.65rem;
+  }
+  
+  .mobileNavIcon {
+    font-size: 1.2rem;
   }
 }

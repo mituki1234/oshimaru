@@ -68,51 +68,40 @@
 
 /* ヒーローセクション */
 .heroSection {
-    background: linear-gradient(90deg, rgba(255,126,0,0.9), rgba(255,90,31,0.95));
-    padding: 60px 0;
-    margin-bottom: 40px;
-    border-radius: 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
     width: 100%;
+    background-color: var(--base-orange);
 }
 
 /* タイトルスタイル */
 .title {
     font-size: 3.5rem;
     font-weight: 700;
-    color: white;
+    color: #fff;
     text-align: center;
-    margin: 0;
     letter-spacing: 1px;
     position: relative;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    animation: fadeIn 1s ease-in-out;
     width: 100%; /* 横幅いっぱいにする */
     max-width: 100%; /* 最大幅を100%に設定 */
-}
-
-.title::after {
-    content: "";
-    display: block;
-    width: 100%; /* 下線も横幅いっぱいに変更 */
-    height: 4px;
-    background-color: white;
-    margin: 15px auto 15px;
-    border-radius: 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 80%; /* 下線の最大幅を設定して、少し余白を残す */
+    margin: 0;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 /* サブタイトルスタイル */
 .subtitle {
     font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: #fff;
+    opacity: 0.8;
     text-align: center;
-    margin: 0 auto 10px;
+    margin: 0 auto 20px;
     max-width: 600px;
-    font-weight: 400;
-    line-height: 1.5;
-    animation: fadeIn 1.2s ease-in-out;
+    font-weight: bold;
 }
 
 /* コンテンツエリアのスタイリング */
@@ -138,7 +127,6 @@
     overflow: hidden;
     text-decoration: none;
     color: #333;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     position: relative;
     display: flex;
@@ -153,7 +141,7 @@
     left: 0;
     right: 0;
     height: 40%;
-    background: linear-gradient(90deg, var(--base-orange), var(--dark-orange));
+    background: var(--base-orange);
     z-index: 1;
 }
 
@@ -193,22 +181,15 @@
 
 /* 角ばったホバー効果 */
 .card:hover {
-    transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .card:hover::before {
-    background: linear-gradient(90deg, var(--dark-orange), var(--base-orange));
+    background: var(--base-orange)
 }
 
 /* カードの下部に直線のアクセントを追加 */
 .card::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
     background: var(--dark-orange);
     opacity: 0.6;
     transition: all 0.3s ease;
@@ -344,4 +325,27 @@
     .heroSection {
         padding: 30px 15px;
     }
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 40px 20px;
+  margin: 20px 0;
+  text-align: center;
+  color: #666;
+  background-color: #f9f9f9;
+  border: 1px solid #eaeaea;
+}
+
+.emptyText {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

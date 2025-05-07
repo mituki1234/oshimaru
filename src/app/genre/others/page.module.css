@@ -17,6 +17,13 @@
   max-width: 800px;
   margin: 0 auto;
 }
+.heading {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: bold;
+  color: var(--dark-orange);
+  padding: 15px;
+}
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {

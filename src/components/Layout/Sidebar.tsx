@@ -24,52 +24,39 @@ export default function Sidebar({ isMobileMenuOpen, toggleMobileMenu }: SidebarP
     <>
       {/* モバイルヘッダー - 常に表示 */}
       <div className={styles.mobileHeader}>
-        <button 
-          className={styles.mobileMenuButton} 
-          onClick={toggleMobileMenu}
-          aria-label="メニューを開く"
-        >
-          <FaBars />
-        </button>
         <div className={styles.mobileLogoContainer}>
           <Link href="/" className={styles.mobileLogoLink}>
             <div className={styles.mobileLogo}>おしまる</div>
           </Link>
         </div>
-        {/* モバイルナビゲーション - ヘッダーとして機能 */}
-        <div className={styles.mobileNav}>
-          <Link href="/genre/shopping" className={isActive('/genre/shopping') ? styles.activeMobileNav : ''}>
-            <FaShoppingBag className={styles.mobileNavIcon} />
-          </Link>
-          <Link href="/genre/event" className={isActive('/genre/event') ? styles.activeMobileNav : ''}>
-            <FaCalendarAlt className={styles.mobileNavIcon} />
-          </Link>
-          <Link href="/genre/hobby" className={isActive('/genre/hobby') ? styles.activeMobileNav : ''}>
-            <FaPaintBrush className={styles.mobileNavIcon} />
-          </Link>
-          <Link href="/genre/job" className={isActive('/genre/job') ? styles.activeMobileNav : ''}>
-            <FaBriefcase className={styles.mobileNavIcon} />
-          </Link>
-          <Link href="/" className={isActive('/') && pathname === '/' ? styles.activeMobileNav : ''}>
-            <IoMdHome className={styles.mobileNavIcon} />
-          </Link>
-        </div>
       </div>
       
-      {/* オーバーレイ - モバイルメニューを開いたときに表示 */}
-      {isMobileMenuOpen && (
-        <div className={styles.mobileMenuOverlay} onClick={toggleMobileMenu} />
-      )}
+      {/* モバイル固定フッターナビゲーション - 常に表示 */}
+      <div className={styles.mobileNavBar}>
+        <Link href="/genre/shopping" className={`${styles.mobileNavItem} ${isActive('/genre/shopping') ? styles.activeMobileNav : ''}`}>
+          <FaShoppingBag className={styles.mobileNavIcon} />
+          <span className={styles.mobileNavText}>お買い物</span>
+        </Link>
+        <Link href="/genre/event" className={`${styles.mobileNavItem} ${isActive('/genre/event') ? styles.activeMobileNav : ''}`}>
+          <FaCalendarAlt className={styles.mobileNavIcon} />
+          <span className={styles.mobileNavText}>イベント</span>
+        </Link>
+        <Link href="/" className={`${styles.mobileNavItem} ${isActive('/') && pathname === '/' ? styles.activeMobileNav : ''}`}>
+          <IoMdHome className={styles.mobileNavIcon} />
+          <span className={styles.mobileNavText}>ホーム</span>
+        </Link>
+        <Link href="/genre/hobby" className={`${styles.mobileNavItem} ${isActive('/genre/hobby') ? styles.activeMobileNav : ''}`}>
+          <FaPaintBrush className={styles.mobileNavIcon} />
+          <span className={styles.mobileNavText}>習い事</span>
+        </Link>
+        <Link href="/genre/job" className={`${styles.mobileNavItem} ${isActive('/genre/job') ? styles.activeMobileNav : ''}`}>
+          <FaBriefcase className={styles.mobileNavIcon} />
+          <span className={styles.mobileNavText}>求人</span>
+        </Link>
+      </div>
       
-      {/* サイドバー */}
+      {/* デスクトップ用サイドバー - モバイルでは非表示 */}
       <div className={styles.sidebar}>
-        <button 
-          className={styles.closeMenuButton} 
-          onClick={toggleMobileMenu}
-          aria-label="メニューを閉じる"
-        >
-          <FaTimes />
-        </button>
         <div className={styles.logo}>
           <Link href="/">
             <span className={styles.logoText}>おしまる</span>
@@ -103,7 +90,7 @@ export default function Sidebar({ isMobileMenuOpen, toggleMobileMenu }: SidebarP
           <div className={`${styles.menuItem} ${isActive('/genre/others') ? styles.active : ''}`}>
             <Link href="/genre/others">
               <FaEllipsisH className={styles.icon} />
-              <span className={styles.menuText}>掲載方法</span>
+              <span className={styles.menuText}>その他</span>
             </Link>
           </div>
           <div className={`${styles.menuItem} ${isActive('/') && pathname === '/' ? styles.active : ''}`}>

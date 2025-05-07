@@ -1,1 +1,8 @@
 @import url('../page.module.css');
+.heading {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+    color: var(--dark-orange);
+    padding: 15px;
+}
