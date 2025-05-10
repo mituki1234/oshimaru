@@ -1,7 +1,7 @@
 'use client';
 
 import { IoMdHome } from "react-icons/io";
-import { FaShoppingBag, FaCalendarAlt, FaPaintBrush, FaBriefcase, FaEllipsisH, FaBars, FaTimes } from "react-icons/fa";
+import { FaShoppingBag, FaCalendarAlt, FaPaintBrush, FaBriefcase, FaEllipsisH, FaNewspaper } from "react-icons/fa";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import styles from "./layout.module.css";
@@ -13,7 +13,7 @@ interface SidebarProps {
 
 export default function Sidebar({ isMobileMenuOpen, toggleMobileMenu }: SidebarProps) {
   const pathname = usePathname();
-  
+
   const isActive = (path: string) => {
     if (path === '/' && pathname === '/') return true;
     if (path !== '/' && pathname.startsWith(path)) return true;
@@ -30,7 +30,7 @@ export default function Sidebar({ isMobileMenuOpen, toggleMobileMenu }: SidebarP
           </Link>
         </div>
       </div>
-      
+
       {/* モバイル固定フッターナビゲーション - 常に表示 */}
       <div className={styles.mobileNavBar}>
         <Link href="/genre/shopping" className={`${styles.mobileNavItem} ${isActive('/genre/shopping') ? styles.activeMobileNav : ''}`}>
@@ -41,11 +41,7 @@ export default function Sidebar({ isMobileMenuOpen, toggleMobileMenu }: SidebarP
           <FaCalendarAlt className={styles.mobileNavIcon} />
           <span className={styles.mobileNavText}>イベント</span>
         </Link>
-        <Link href="/" className={`${styles.mobileNavItem} ${isActive('/') && pathname === '/' ? styles.activeMobileNav : ''}`}>
-          <IoMdHome className={styles.mobileNavIcon} />
-          <span className={styles.mobileNavText}>ホーム</span>
-        </Link>
-        <Link href="/genre/hobby" className={`${styles.mobileNavItem} ${isActive('/genre/hobby') ? styles.activeMobileNav : ''}`}>
+        <Link href="/genre/hobby" className={`${styles.mobileNavItem} ${isActive('/genre/hobby') ? styles.activeMobileNav : ''}`} >
           <FaPaintBrush className={styles.mobileNavIcon} />
           <span className={styles.mobileNavText}>習い事</span>
         </Link>
@@ -53,8 +49,12 @@ export default function Sidebar({ isMobileMenuOpen, toggleMobileMenu }: SidebarP
           <FaBriefcase className={styles.mobileNavIcon} />
           <span className={styles.mobileNavText}>求人</span>
         </Link>
+        <Link href="/how-to-post" className={`${styles.mobileNavItem} ${isActive('/how-to-post') ? styles.activeMobileNav : ''}`}>
+          <FaNewspaper className={styles.mobileNavIcon} />
+          <span className={styles.mobileNavText}>掲載方法</span>
+        </Link>
       </div>
-      
+
       {/* デスクトップ用サイドバー - モバイルでは非表示 */}
       <div className={styles.sidebar}>
         <div className={styles.logo}>
@@ -93,14 +93,9 @@ export default function Sidebar({ isMobileMenuOpen, toggleMobileMenu }: SidebarP
               <span className={styles.menuText}>その他</span>
             </Link>
           </div>
-          <div className={`${styles.menuItem} ${isActive('/') && pathname === '/' ? styles.active : ''}`}>
-            <Link href="/" className={styles.homeLink}>
-              <IoMdHome className={styles.icon} />
-              <span className={styles.menuText}>ホーム</span>
-            </Link>
-          </div>
-          <div className={styles.menuItem}>
-            <Link href="" className={styles.homeLink}>
+          <div className={`${styles.menuItem} ${isActive('/keisai') ? styles.active : ''}`}>
+            <Link href="/how-to-post" className={styles.homeLink}>
+              <FaNewspaper className={styles.icon} />
               <span className={styles.menuText}>掲載方法</span>
             </Link>
           </div>
