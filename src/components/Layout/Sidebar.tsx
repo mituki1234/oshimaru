@@ -99,6 +99,11 @@ export default function Sidebar({ isMobileMenuOpen, toggleMobileMenu }: SidebarP
               <span className={styles.menuText}>ホーム</span>
             </Link>
           </div>
+          <div className={styles.menuItem}>
+            <Link href="" className={styles.homeLink}>
+              <span className={styles.menuText}>掲載方法</span>
+            </Link>
+          </div>
         </div>
       </div>
     </>

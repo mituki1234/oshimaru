@@ -1,0 +1,27 @@
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.content {
+    width: 100%;
+}
+.img {
+    width: 100%;
+    aspect-ratio: 1 / 1.414;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+.one {
+    background-image: url('/keisai1.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.two {
+    background-image: url('/keisai2.jpg');
+    background-size: cover;
+    background-position: center;
+}
