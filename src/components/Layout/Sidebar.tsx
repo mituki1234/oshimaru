@@ -93,7 +93,7 @@ export default function Sidebar({ isMobileMenuOpen, toggleMobileMenu }: SidebarP
               <span className={styles.menuText}>その他</span>
             </Link>
           </div>
-          <div className={`${styles.menuItem} ${isActive('/keisai') ? styles.active : ''}`}>
+          <div className={`${styles.menuItem} ${isActive('/how-to-post') ? styles.active : ''}`}>
             <Link href="/how-to-post" className={styles.homeLink}>
               <FaNewspaper className={styles.icon} />
               <span className={styles.menuText}>掲載方法</span>
